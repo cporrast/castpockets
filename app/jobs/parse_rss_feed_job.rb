@@ -26,7 +26,7 @@ class ParseRssFeedJob < ApplicationJob
       published_date: episode.published,
       guid: episode.entry_id,
       author: episode.respond_to?(:itunes_author) ? episode.itunes_author : nil,
-      image: episode.respond_to?(:itunes_image) && episode.itunes_image.present? ? episode.itunes_image : Podcast.find_by(id: podcast_id)&.image
+      image: image # episode.respond_to?(:itunes_image) && episode.itunes_image.present? ? episode.itunes_image : Podcast.find_by(id: podcast_id)&.image
     }
   end
 end
